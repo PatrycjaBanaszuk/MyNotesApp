@@ -28,23 +28,14 @@
 
 
     <div class="note-area">
-        <div class="note">
-            <div class="note-header">
-                <h3 class="note-tittle">Note #1</h3>
-                <button class="delete-note"><i class="fas fa-times icon"></i></button>
-            </div>
-
-            <div class="note-body">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ratione, aliquam pariatur
-                quam, rerum in unde mollitia necessitatibus deserunt doloremque, est blanditiis soluta quas ipsam sint
-                tempora provident incidunt cum ab!</div>
-        </div>
+       
     </div>
 
 
     <div class="note-panel">
         <h2>Add note</h2>
         <label for="category">Select categorie</label>
-        <select id="category">
+        <select id="category" onchange="selectValue()">
             <option value="0" disabled selected>-select categorie--</option>
             <option value="1">Groceries</option>
             <option value="1">Work</option>
@@ -54,7 +45,7 @@
         <label for="text">Please, type the content of the note.</label>
         <textarea id="text"></textarea>
 
-        <p class="error">Fill in all fields!</p>
+        <p class="error">Please, fill in all fields!</p>
 
         <div class="panel-buttons">
             <button class="save icon"><i class="fas fa-save"></i>Save</button>
