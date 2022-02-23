@@ -41,7 +41,7 @@ const createNote = () => {
 
 	newNote.innerHTML = `<div class="note-header">
     <h3 class="note-tittle">${selectedValue}</h3>
-    <button class="delete-note"><i class="fas fa-times icon"></i></button>
+    <button class="delete-note" onclick= "deleteNote(${cardID})"><i class="fas fa-times icon"></i></button>
 </div>
 
 <div class="note-body">${textarea.value}</div>
@@ -49,15 +49,41 @@ const createNote = () => {
 
 	noteArea.appendChild(newNote)
 	cardID++
-    textarea.value = '';
-    category.selectedIndex = 0;
-    notePanel.style.display = 'none'
+	textarea.value = ''
+	category.selectedIndex = 0
+	notePanel.style.display = 'none'
+	checkColor(newNote)
 }
 
 const selectValue = () => {
 	selectedValue = category.options[category.selectedIndex].text
 }
 
+const checkColor = note => {
+	switch (selectedValue) {
+		case 'Groceries':
+			note.style.backgroundColor = 'rgb(72,255,0)'
+			break
+		case 'Work':
+			note.style.backgroundColor = 'rgb(255,243,0)'
+			break
+		case 'Other':
+			note.style.backgroundColor = 'rgb(0,177,255)'
+			break
+	}
+}
+
+const deleteNote = id => {
+	const noteTodelete = document.getElementById(id)
+	noteArea.removeChild(noteTodelete)
+
+}
+
+const deleteAllNotes = () => {
+	noteArea.textContent = ''
+}
+
 addBtn.addEventListener('click', openPanel)
 cancelBtn.addEventListener('click', closePanel)
 saveBtn.addEventListener('click', addNote)
+deleteAllBtn.addEventListener('click', deleteAllNotes)
